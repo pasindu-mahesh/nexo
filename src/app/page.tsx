@@ -1,9 +1,13 @@
-import Image from "next/image";
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import Services from '@/components/Services';
 
 export default function Home() {
   return (
-    <h1 className="text-3xl font-bold underline bg-red-500">
-      Hello world!
-    </h1>
+    <main className="min-h-screen w-full bg-white">
+      <Navbar />
+      <Hero />
+      <Services />
+    </main>
   );
 }

@@ -39,7 +39,7 @@ export default function Navbar() {
             <a href="#portfolio" className="text-gray-600 text-sm hover:text-red-500 transition">
               Portfolio
             </a>
-            <a href="#blog" className="text-gray-600 text-sm hover:text-red-500 transition">
+            <a href="/blog" className="text-gray-600 text-sm hover:text-red-500 transition">
               Blog
             </a>
             <a href="#about" className="text-gray-600 text-sm hover:text-red-500 transition">

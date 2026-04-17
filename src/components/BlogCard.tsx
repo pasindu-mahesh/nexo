@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
@@ -77,20 +78,22 @@ export default function BlogCard({ id, title, excerpt, thumbnail, date, category
           </p>
 
           {/* Read More Button */}
-          <motion.button
-            whileHover={{ x: 6 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 text-red-500 font-semibold text-sm hover:text-red-600 transition-colors duration-300 group/btn"
-          >
-            Read More
-            <motion.span
-              className="inline-block"
-              whileHover={{ x: 3 }}
-              transition={{ duration: 0.2 }}
+          <Link href={`/blog/${id}`} className="inline-flex items-center gap-2">
+            <motion.button
+              whileHover={{ x: 6 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 text-red-500 font-semibold text-sm hover:text-red-600 transition-colors duration-300 group/btn"
             >
-              <ArrowRight size={16} />
-            </motion.span>
-          </motion.button>
+              Read More
+              <motion.span
+                className="inline-block"
+                whileHover={{ x: 3 }}
+                transition={{ duration: 0.2 }}
+              >
+                <ArrowRight size={16} />
+              </motion.span>
+            </motion.button>
+          </Link>
         </div>
       </div>
     </motion.article>

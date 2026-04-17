@@ -4,118 +4,7 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import BlogCard from '@/components/BlogCard';
 import BlogPagination from '@/components/BlogPagination';
-
-// Sample blog data - Replace with your actual blog data source
-const SAMPLE_BLOGS = [
-  {
-    id: '1',
-    title: 'How to Maximize Your Social Media ROI in 2024',
-    excerpt:
-      'Learn the latest strategies for measuring and improving your social media return on investment. We explore data-driven approaches, audience segmentation, and conversion optimization techniques that top brands are using right now.',
-    thumbnail: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=500&q=80',
-    date: 'Apr 15, 2024',
-    category: 'Social Media',
-  },
-  {
-    id: '2',
-    title: 'The Complete Guide to SEO in 2024',
-    excerpt:
-      'Discover the most current SEO best practices and how search engine algorithms have evolved. This comprehensive guide covers technical SEO, content optimization, link building strategies, and tools you need to dominate search results.',
-    thumbnail: 'https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=500&q=80',
-    date: 'Apr 14, 2024',
-    category: 'SEO',
-  },
-  {
-    id: '3',
-    title: 'Building a High-Converting Landing Page',
-    excerpt:
-      'Master the art of landing page design and copywriting to boost your conversion rates. We dive into psychological triggers, A/B testing methodologies, and real-world case studies from successful campaigns.',
-    thumbnail: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&q=80',
-    date: 'Apr 13, 2024',
-    category: 'Design',
-  },
-  {
-    id: '4',
-    title: 'Content Marketing Strategies That Actually Work',
-    excerpt:
-      'Explore content distribution channels, content calendar planning, and audience engagement tactics that drive real business results. Learn from industry leaders and apply these proven methodologies to your content strategy.',
-    thumbnail: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&q=80',
-    date: 'Apr 12, 2024',
-    category: 'Content',
-  },
-  {
-    id: '5',
-    title: 'Email Marketing Automation for Growth',
-    excerpt:
-      'Unlock the power of email automation to nurture leads and increase customer lifetime value. This guide covers segmentation strategies, personalization techniques, and workflow automation best practices.',
-    thumbnail: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=500&q=80',
-    date: 'Apr 11, 2024',
-    category: 'Email',
-  },
-  {
-    id: '6',
-    title: 'Understanding User Analytics and Behavior',
-    excerpt:
-      'Learn how to interpret user analytics data to make informed business decisions. This article covers key metrics, analytics tools, heatmaps, user behavior tracking, and actionable insights for optimization.',
-    thumbnail: 'https://images.unsplash.com/photo-1460925895917-adf4e2a92c61?w=500&q=80',
-    date: 'Apr 10, 2024',
-    category: 'Analytics',
-  },
-  {
-    id: '7',
-    title: 'Video Marketing: The Future of Digital Advertising',
-    excerpt:
-      'Discover why video content dominates digital marketing and how to create compelling video campaigns. From YouTube strategies to TikTok trends, we cover platforms, best practices, and measurement techniques.',
-    thumbnail: 'https://images.unsplash.com/photo-1498050108023-c8248f4aa446?w=500&q=80',
-    date: 'Apr 9, 2024',
-    category: 'Video',
-  },
-  {
-    id: '8',
-    title: 'Influencer Marketing: Building Strategic Partnerships',
-    excerpt:
-      'Learn how to identify, vet, and collaborate with influencers who align with your brand values. This guide includes negotiation strategies, campaign measurement, and ROI tracking methodologies.',
-    thumbnail: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80',
-    date: 'Apr 8, 2024',
-    category: 'Influencer',
-  },
-  {
-    id: '9',
-    title: 'Mobile Marketing Strategy for Modern Consumers',
-    excerpt:
-      'Understand how to optimize your marketing for mobile-first audiences. We cover app marketing, mobile-friendly design, SMS campaigns, push notifications, and mobile commerce best practices.',
-    thumbnail: 'https://images.unsplash.com/photo-1512941691920-25bef266aad1?w=500&q=80',
-    date: 'Apr 7, 2024',
-    category: 'Mobile',
-  },
-  {
-    id: '10',
-    title: 'Conversion Rate Optimization Fundamentals',
-    excerpt:
-      'Master the science of turning visitors into customers through systematic CRO. Learn about split testing, user experience optimization, checkout flow improvements, and data-driven decision making.',
-    thumbnail: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80',
-    date: 'Apr 6, 2024',
-    category: 'Growth',
-  },
-  {
-    id: '11',
-    title: 'Brand Identity and Logo Design Trends',
-    excerpt:
-      'Explore contemporary design trends and how to create a memorable brand identity. This article covers color psychology, typography, logo design principles, and visual consistency across platforms.',
-    thumbnail: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&q=80',
-    date: 'Apr 5, 2024',
-    category: 'Branding',
-  },
-  {
-    id: '12',
-    title: 'PPC Advertising Strategies for Maximum ROI',
-    excerpt:
-      'Dominate paid advertising channels with expert PPC strategies. Learn keyword research, bid management, ad copy optimization, landing page alignment, and performance tracking across Google Ads and social platforms.',
-    thumbnail: 'https://images.unsplash.com/photo-1553531889-e6cf89480f0b?w=500&q=80',
-    date: 'Apr 4, 2024',
-    category: 'Advertising',
-  },
-];
+import { BLOG_POSTS } from '@/lib/blogData';
 
 const POSTS_PER_PAGE = 9;
 
@@ -124,7 +13,7 @@ export default function BlogPage() {
 
   // Sort blogs by date (newest first) and paginate
   const paginatedBlogs = useMemo(() => {
-    const sortedBlogs = [...SAMPLE_BLOGS].sort(
+    const sortedBlogs = [...BLOG_POSTS].sort(
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 
@@ -133,7 +22,7 @@ export default function BlogPage() {
     return sortedBlogs.slice(startIdx, endIdx);
   }, [currentPage]);
 
-  const totalPages = Math.ceil(SAMPLE_BLOGS.length / POSTS_PER_PAGE);
+  const totalPages = Math.ceil(BLOG_POSTS.length / POSTS_PER_PAGE);
 
   return (
     <div className="min-h-screen bg-white">

@@ -16,7 +16,7 @@ export default function Navbar() {
 
           {/* Menu Items */}
           <div className="hidden lg:flex items-center gap-8">
-            <a href="#home" className="text-gray-900 font-medium text-sm hover:text-red-500 transition">
+            <a href="/" className="text-gray-900 font-medium text-sm hover:text-red-500 transition">
               Home
             </a>
             <div className="relative group cursor-pointer">
